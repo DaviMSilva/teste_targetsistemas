@@ -12,10 +12,10 @@ class faturadiario():
         menorFaturamento = -1
         for i in dados:
             if menorFaturamento == -1:
-                menorFaturamento = i['faturamento']
+                menorFaturamento = i['valor']
 
-            if i['faturamento'] < menorFaturamento:
-                menorFaturamento = i['faturamento']
+            if i['valor'] < menorFaturamento and i['valor'] != 0:
+                menorFaturamento = i['valor']
         
         print(menorFaturamento)
 
@@ -27,8 +27,8 @@ class faturadiario():
         maiorFaturamento = 0
         for i in dados:
 
-            if i['faturamento'] > maiorFaturamento:
-                maiorFaturamento = i['faturamento']
+            if i['valor'] > maiorFaturamento:
+                maiorFaturamento = i['valor']
         
         print(maiorFaturamento)
 
@@ -40,8 +40,8 @@ class faturadiario():
         somaTotal = 0
         diasTotal = 0
         for i in dados:
-            if i['faturamento'] != 0:
-                somaTotal += i['faturamento']
+            if i['valor'] != 0:
+                somaTotal += i['valor']
                 diasTotal+=1
         
         media = somaTotal/diasTotal
@@ -55,7 +55,7 @@ class faturadiario():
         
         diasSuperior = 0
         for i in dados:
-            if i['faturamento'] > media:
+            if i['valor'] > media:
                 
                 diasSuperior+=1
         
@@ -63,10 +63,10 @@ class faturadiario():
         print(diasSuperior)
 
 arq = 'dados.json'
-print('maior faturamento :' )
+print('maior valor :' )
 faturadiario.maiorFaturamento(arq)
 
-print('menor faturamento')
+print('menor valor diferente de zero')
 faturadiario.menorFaturamento(arq)
 
 media = faturadiario.mediaFaturamento(arq)
